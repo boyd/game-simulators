@@ -196,11 +196,13 @@ class ResistanceGame(object):
     return "Reject"
 
 def main():
+  print "Players\t  Resistance Wins\tSpy Wins"
   for num_players in range(5, 11):
     wins = collections.defaultdict(int)
     for n in range(1000):
       game = ResistanceGame(num_players)
       wins[game.run()] += 1
-    print num_players, wins
+    print "{0!s}\t\t{1!s}\t\t{2!s}".format(num_players, wins.get('Resistance',0), wins.get('Spies',0))
 
-main()
+if __name__ == "__main__":
+  main()
